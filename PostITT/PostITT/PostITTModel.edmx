@@ -1,0 +1,1088 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PostITTModel1.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORYID" />
+          </Key>
+          <Property Name="CATEGORYID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="CATEGORYNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ITTUSER">
+          <Key>
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="USERID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="SCORE" Type="number" Precision="5" Scale="0" />
+          <Property Name="PROFILEPIC" Type="varchar2" MaxLength="50" />
+          <Property Name="USERTYPEID" Type="number" Precision="5" Scale="0" />
+        </EntityType>
+        <EntityType Name="MEDIA">
+          <Key>
+            <PropertyRef Name="MEDIAID" />
+          </Key>
+          <Property Name="MEDIAID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="MEDIATYPEID" Type="number" Precision="5" Scale="0" />
+          <Property Name="URL" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="1" />
+          <Property Name="POSTID" Type="number" Precision="5" Scale="0" />
+        </EntityType>
+        <EntityType Name="MEDIATYPE">
+          <Key>
+            <PropertyRef Name="MEDIATYPEID" />
+          </Key>
+          <Property Name="MEDIATYPEID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="MEDIATYPEDESC" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POST">
+          <Key>
+            <PropertyRef Name="POSTID" />
+          </Key>
+          <Property Name="POSTID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="PARENTID" Type="number" Precision="5" Scale="0" />
+          <Property Name="POSTDATE" Type="date" />
+          <Property Name="POSTTEXT" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="USERID" Type="number" Precision="5" Scale="0" />
+          <Property Name="POSTTYPEID" Type="number" Precision="5" Scale="0" />
+          <Property Name="CATEGORYID" Type="number" Precision="5" Scale="0" />
+          <Property Name="MEDIAID" Type="number" Precision="5" Scale="0" />
+        </EntityType>
+        <EntityType Name="POSTTYPE">
+          <Key>
+            <PropertyRef Name="POSTTYPEID" />
+          </Key>
+          <Property Name="POSTTYPEID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="POSTTYPE" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RANK">
+          <Key>
+            <PropertyRef Name="RANKID" />
+          </Key>
+          <Property Name="RANKID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="POSTRANK" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="USERID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="POSTID" Type="number" Precision="5" Scale="0" />
+        </EntityType>
+        <EntityType Name="TAG">
+          <Key>
+            <PropertyRef Name="TAGID" />
+          </Key>
+          <Property Name="TAGID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="TAGNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="CATEGORYID" Type="number" Precision="5" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERTYPE">
+          <Key>
+            <PropertyRef Name="USERTYPEID" />
+          </Key>
+          <Property Name="USERTYPEID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="TYPEDESCRIPTION" Type="varchar2" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KATIE.MEDIA_MODERATOR_VIEW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MEDIA_MODERATOR_VIEW">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="POSTTEXT" />
+          </Key>
+          <Property Name="USERID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="POSTTEXT" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="POSTTYPE" Type="varchar2" MaxLength="20" />
+          <Property Name="CATEGORYNAME" Type="varchar2" MaxLength="20" />
+          <Property Name="TAGNAME" Type="varchar2" MaxLength="20" />
+          <Property Name="POSTRANK" Type="number" Precision="5" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KATIE.VIEWPOSTS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VIEWPOSTS">
+          <Key>
+            <PropertyRef Name="POSTID" />
+            <PropertyRef Name="POSTTEXT" />
+          </Key>
+          <Property Name="POSTID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="POSTTEXT" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="USERID" Type="number" Precision="5" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KATIE.VIEWUSER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VIEWUSER">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="FIRSTNAME" />
+            <PropertyRef Name="SURNAME" />
+          </Key>
+          <Property Name="USERID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KATIE.VIEWUSERPOSTS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VIEWUSERPOSTS">
+          <Key>
+            <PropertyRef Name="FIRSTNAME" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="POSTTEXT" />
+          </Key>
+          <Property Name="USERID" Type="number" Precision="5" Scale="0" />
+          <Property Name="FIRSTNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="POSTTEXT" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KATIE.VIEWUSERPOSTSTYPECATTAGRANK' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VIEWUSERPOSTSTYPECATTAGRANK">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="POSTTEXT" />
+          </Key>
+          <Property Name="USERID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="POSTTEXT" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="POSTTYPE" Type="varchar2" MaxLength="20" />
+          <Property Name="CATEGORYNAME" Type="varchar2" MaxLength="20" />
+          <Property Name="TAGNAME" Type="varchar2" MaxLength="20" />
+          <Property Name="POSTRANK" Type="number" Precision="5" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KATIE.VIEWUSERPROFILE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VIEWUSERPROFILE">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="FIRSTNAME" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="EMAIL" />
+          </Key>
+          <Property Name="USERID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="SCORE" Type="number" Precision="5" Scale="0" />
+          <Property Name="PROFILEPIC" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KATIE.VIEWUSERTYPEPOSTS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VIEWUSERTYPEPOSTS">
+          <Key>
+            <PropertyRef Name="TYPEDESCRIPTION" />
+            <PropertyRef Name="FIRSTNAME" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="POSTTEXT" />
+          </Key>
+          <Property Name="USERID" Type="number" Precision="5" Scale="0" />
+          <Property Name="TYPEDESCRIPTION" Type="varchar2" MaxLength="1" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="POSTTEXT" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CATEGORYID_P">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+          <End Role="POST" Type="Self.POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORYID" />
+            </Principal>
+            <Dependent Role="POST">
+              <PropertyRef Name="CATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORYID_T">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+          <End Role="TAG" Type="Self.TAG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORYID" />
+            </Principal>
+            <Dependent Role="TAG">
+              <PropertyRef Name="CATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDIATYPEID_M">
+          <End Role="MEDIATYPE" Type="Self.MEDIATYPE" Multiplicity="0..1" />
+          <End Role="MEDIA" Type="Self.MEDIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDIATYPE">
+              <PropertyRef Name="MEDIATYPEID" />
+            </Principal>
+            <Dependent Role="MEDIA">
+              <PropertyRef Name="MEDIATYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PARENTID_P">
+          <End Role="POST" Type="Self.POST" Multiplicity="0..1" />
+          <End Role="POST1" Type="Self.POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POST">
+              <PropertyRef Name="POSTID" />
+            </Principal>
+            <Dependent Role="POST1">
+              <PropertyRef Name="PARENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSTID_M">
+          <End Role="POST" Type="Self.POST" Multiplicity="0..1" />
+          <End Role="MEDIA" Type="Self.MEDIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POST">
+              <PropertyRef Name="POSTID" />
+            </Principal>
+            <Dependent Role="MEDIA">
+              <PropertyRef Name="POSTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSTID_R">
+          <End Role="POST" Type="Self.POST" Multiplicity="0..1" />
+          <End Role="RANK" Type="Self.RANK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POST">
+              <PropertyRef Name="POSTID" />
+            </Principal>
+            <Dependent Role="RANK">
+              <PropertyRef Name="POSTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSTTYPEID_P">
+          <End Role="POSTTYPE" Type="Self.POSTTYPE" Multiplicity="0..1" />
+          <End Role="POST" Type="Self.POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSTTYPE">
+              <PropertyRef Name="POSTTYPEID" />
+            </Principal>
+            <Dependent Role="POST">
+              <PropertyRef Name="POSTTYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERID_P">
+          <End Role="ITTUSER" Type="Self.ITTUSER" Multiplicity="0..1" />
+          <End Role="POST" Type="Self.POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITTUSER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="POST">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERID_R">
+          <End Role="ITTUSER" Type="Self.ITTUSER" Multiplicity="1" />
+          <End Role="RANK" Type="Self.RANK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITTUSER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="RANK">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERTYPEID_UD">
+          <End Role="USERTYPE" Type="Self.USERTYPE" Multiplicity="0..1" />
+          <End Role="ITTUSER" Type="Self.ITTUSER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERTYPE">
+              <PropertyRef Name="USERTYPEID" />
+            </Principal>
+            <Dependent Role="ITTUSER">
+              <PropertyRef Name="USERTYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ANSWERPOST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE" />
+        <Function Name="CREATEADMINISTRATOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE" />
+        <Function Name="CREATECATEGORY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE">
+          <Parameter Name="CATDESC" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="CREATEITTUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE">
+          <Parameter Name="FIRSTNAME" Type="varchar2" Mode="In" />
+          <Parameter Name="SURNAME" Type="varchar2" Mode="In" />
+          <Parameter Name="PASSWORD" Type="varchar2" Mode="In" />
+          <Parameter Name="EMAIL" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="CREATETAG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE">
+          <Parameter Name="TAGDESC" Type="varchar2" Mode="In" />
+          <Parameter Name="CATID" Type="number" Mode="In" />
+        </Function>
+        <Function Name="CREATEUSERTYPE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE" />
+        <Function Name="DECREMENTSCORE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE" ReturnType="number">
+          <Parameter Name="PSTID" Type="number" Mode="In" />
+        </Function>
+        <Function Name="DEREGISTERITTUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE">
+          <Parameter Name="FNAM" Type="varchar2" Mode="In" />
+          <Parameter Name="SNAM" Type="varchar2" Mode="In" />
+          <Parameter Name="PASS" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="INFORMATIVEPOST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE" />
+        <Function Name="INITIALPOST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE">
+          <Parameter Name="POSTID" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="LOADAFILEPROCEDURE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE">
+          <Parameter Name="DIR_NAME" Type="varchar2" Mode="In" />
+          <Parameter Name="URL" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="LOGIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE">
+          <Parameter Name="V_EMAIL" Type="varchar2" Mode="In" />
+          <Parameter Name="V_PASSWORD" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="QUESTIONPOST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE" />
+        <Function Name="REPLYPOST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE" />
+        <Function Name="REPLYPOSTPROC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE">
+          <Parameter Name="CHILDPOSTID" Type="number" Mode="In" />
+          <Parameter Name="PARENTPOSTID" Type="number" Mode="In" />
+        </Function>
+        <Function Name="UPDATESCORE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="KATIE">
+          <Parameter Name="UID" Type="number" Mode="In" />
+        </Function>
+        <EntityContainer Name="PostITTModel1StoreContainer">
+          <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="KATIE" store:Type="Tables" />
+          <EntitySet Name="ITTUSER" EntityType="Self.ITTUSER" Schema="KATIE" store:Type="Tables" />
+          <EntitySet Name="MEDIA" EntityType="Self.MEDIA" Schema="KATIE" store:Type="Tables" />
+          <EntitySet Name="MEDIATYPE" EntityType="Self.MEDIATYPE" Schema="KATIE" store:Type="Tables" />
+          <EntitySet Name="POST" EntityType="Self.POST" Schema="KATIE" store:Type="Tables" />
+          <EntitySet Name="POSTTYPE" EntityType="Self.POSTTYPE" Schema="KATIE" store:Type="Tables" />
+          <EntitySet Name="RANK" EntityType="Self.RANK" Schema="KATIE" store:Type="Tables" />
+          <EntitySet Name="TAG" EntityType="Self.TAG" Schema="KATIE" store:Type="Tables" />
+          <EntitySet Name="USERTYPE" EntityType="Self.USERTYPE" Schema="KATIE" store:Type="Tables" />
+          <EntitySet Name="MEDIA_MODERATOR_VIEW" EntityType="Self.MEDIA_MODERATOR_VIEW" store:Type="Views" store:Schema="KATIE">
+            <DefiningQuery>SELECT 
+"MEDIA_MODERATOR_VIEW"."USERID" AS "USERID", 
+"MEDIA_MODERATOR_VIEW"."SURNAME" AS "SURNAME", 
+"MEDIA_MODERATOR_VIEW"."POSTTEXT" AS "POSTTEXT", 
+"MEDIA_MODERATOR_VIEW"."POSTTYPE" AS "POSTTYPE", 
+"MEDIA_MODERATOR_VIEW"."CATEGORYNAME" AS "CATEGORYNAME", 
+"MEDIA_MODERATOR_VIEW"."TAGNAME" AS "TAGNAME", 
+"MEDIA_MODERATOR_VIEW"."POSTRANK" AS "POSTRANK"
+FROM "KATIE"."MEDIA_MODERATOR_VIEW" "MEDIA_MODERATOR_VIEW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VIEWPOSTS" EntityType="Self.VIEWPOSTS" store:Type="Views" store:Schema="KATIE">
+            <DefiningQuery>SELECT 
+"VIEWPOSTS"."POSTID" AS "POSTID", 
+"VIEWPOSTS"."POSTTEXT" AS "POSTTEXT", 
+"VIEWPOSTS"."USERID" AS "USERID"
+FROM "KATIE"."VIEWPOSTS" "VIEWPOSTS"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VIEWUSER" EntityType="Self.VIEWUSER" store:Type="Views" store:Schema="KATIE">
+            <DefiningQuery>SELECT 
+"VIEWUSER"."USERID" AS "USERID", 
+"VIEWUSER"."FIRSTNAME" AS "FIRSTNAME", 
+"VIEWUSER"."SURNAME" AS "SURNAME"
+FROM "KATIE"."VIEWUSER" "VIEWUSER"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VIEWUSERPOSTS" EntityType="Self.VIEWUSERPOSTS" store:Type="Views" store:Schema="KATIE">
+            <DefiningQuery>SELECT 
+"VIEWUSERPOSTS"."USERID" AS "USERID", 
+"VIEWUSERPOSTS"."FIRSTNAME" AS "FIRSTNAME", 
+"VIEWUSERPOSTS"."SURNAME" AS "SURNAME", 
+"VIEWUSERPOSTS"."POSTTEXT" AS "POSTTEXT"
+FROM "KATIE"."VIEWUSERPOSTS" "VIEWUSERPOSTS"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VIEWUSERPOSTSTYPECATTAGRANK" EntityType="Self.VIEWUSERPOSTSTYPECATTAGRANK" store:Type="Views" store:Schema="KATIE">
+            <DefiningQuery>SELECT 
+"VIEWUSERPOSTSTYPECATTAGRANK"."USERID" AS "USERID", 
+"VIEWUSERPOSTSTYPECATTAGRANK"."SURNAME" AS "SURNAME", 
+"VIEWUSERPOSTSTYPECATTAGRANK"."POSTTEXT" AS "POSTTEXT", 
+"VIEWUSERPOSTSTYPECATTAGRANK"."POSTTYPE" AS "POSTTYPE", 
+"VIEWUSERPOSTSTYPECATTAGRANK"."CATEGORYNAME" AS "CATEGORYNAME", 
+"VIEWUSERPOSTSTYPECATTAGRANK"."TAGNAME" AS "TAGNAME", 
+"VIEWUSERPOSTSTYPECATTAGRANK"."POSTRANK" AS "POSTRANK"
+FROM "KATIE"."VIEWUSERPOSTSTYPECATTAGRANK" "VIEWUSERPOSTSTYPECATTAGRANK"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VIEWUSERPROFILE" EntityType="Self.VIEWUSERPROFILE" store:Type="Views" store:Schema="KATIE">
+            <DefiningQuery>SELECT 
+"VIEWUSERPROFILE"."USERID" AS "USERID", 
+"VIEWUSERPROFILE"."FIRSTNAME" AS "FIRSTNAME", 
+"VIEWUSERPROFILE"."SURNAME" AS "SURNAME", 
+"VIEWUSERPROFILE"."EMAIL" AS "EMAIL", 
+"VIEWUSERPROFILE"."SCORE" AS "SCORE", 
+"VIEWUSERPROFILE"."PROFILEPIC" AS "PROFILEPIC"
+FROM "KATIE"."VIEWUSERPROFILE" "VIEWUSERPROFILE"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VIEWUSERTYPEPOSTS" EntityType="Self.VIEWUSERTYPEPOSTS" store:Type="Views" store:Schema="KATIE">
+            <DefiningQuery>SELECT 
+"VIEWUSERTYPEPOSTS"."USERID" AS "USERID", 
+"VIEWUSERTYPEPOSTS"."TYPEDESCRIPTION" AS "TYPEDESCRIPTION", 
+"VIEWUSERTYPEPOSTS"."FIRSTNAME" AS "FIRSTNAME", 
+"VIEWUSERTYPEPOSTS"."SURNAME" AS "SURNAME", 
+"VIEWUSERTYPEPOSTS"."POSTTEXT" AS "POSTTEXT"
+FROM "KATIE"."VIEWUSERTYPEPOSTS" "VIEWUSERTYPEPOSTS"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CATEGORYID_P" Association="Self.FK_CATEGORYID_P">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="POST" EntitySet="POST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORYID_T" Association="Self.FK_CATEGORYID_T">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="TAG" EntitySet="TAG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDIATYPEID_M" Association="Self.FK_MEDIATYPEID_M">
+            <End Role="MEDIATYPE" EntitySet="MEDIATYPE" />
+            <End Role="MEDIA" EntitySet="MEDIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PARENTID_P" Association="Self.FK_PARENTID_P">
+            <End Role="POST" EntitySet="POST" />
+            <End Role="POST1" EntitySet="POST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSTID_M" Association="Self.FK_POSTID_M">
+            <End Role="POST" EntitySet="POST" />
+            <End Role="MEDIA" EntitySet="MEDIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSTID_R" Association="Self.FK_POSTID_R">
+            <End Role="POST" EntitySet="POST" />
+            <End Role="RANK" EntitySet="RANK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSTTYPEID_P" Association="Self.FK_POSTTYPEID_P">
+            <End Role="POSTTYPE" EntitySet="POSTTYPE" />
+            <End Role="POST" EntitySet="POST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERID_P" Association="Self.FK_USERID_P">
+            <End Role="ITTUSER" EntitySet="ITTUSER" />
+            <End Role="POST" EntitySet="POST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERID_R" Association="Self.FK_USERID_R">
+            <End Role="ITTUSER" EntitySet="ITTUSER" />
+            <End Role="RANK" EntitySet="RANK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERTYPEID_UD" Association="Self.FK_USERTYPEID_UD">
+            <End Role="USERTYPE" EntitySet="USERTYPE" />
+            <End Role="ITTUSER" EntitySet="ITTUSER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PostITTModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORYID" />
+          </Key>
+          <Property Name="CATEGORYID" Type="Int16" Nullable="false" />
+          <Property Name="CATEGORYNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="POSTs" Relationship="Self.FK_CATEGORYID_P" FromRole="CATEGORY" ToRole="POST" />
+          <NavigationProperty Name="TAGs" Relationship="Self.FK_CATEGORYID_T" FromRole="CATEGORY" ToRole="TAG" />
+        </EntityType>
+        <EntityType Name="ITTUSER">
+          <Key>
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="USERID" Type="Int16" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SCORE" Type="Int16" />
+          <Property Name="PROFILEPIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USERTYPEID" Type="Int16" />
+          <NavigationProperty Name="POSTs" Relationship="Self.FK_USERID_P" FromRole="ITTUSER" ToRole="POST" />
+          <NavigationProperty Name="RANKs" Relationship="Self.FK_USERID_R" FromRole="ITTUSER" ToRole="RANK" />
+          <NavigationProperty Name="USERTYPE" Relationship="Self.FK_USERTYPEID_UD" FromRole="ITTUSER" ToRole="USERTYPE" />
+        </EntityType>
+        <EntityType Name="Medium">
+          <Key>
+            <PropertyRef Name="MEDIAID" />
+          </Key>
+          <Property Name="MEDIAID" Type="Int16" Nullable="false" />
+          <Property Name="MEDIATYPEID" Type="Int16" />
+          <Property Name="URL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="POSTID" Type="Int16" />
+          <NavigationProperty Name="MEDIATYPE" Relationship="Self.FK_MEDIATYPEID_M" FromRole="MEDIA" ToRole="MEDIATYPE" />
+          <NavigationProperty Name="POST" Relationship="Self.FK_POSTID_M" FromRole="MEDIA" ToRole="POST" />
+        </EntityType>
+        <EntityType Name="MEDIATYPE">
+          <Key>
+            <PropertyRef Name="MEDIATYPEID" />
+          </Key>
+          <Property Name="MEDIATYPEID" Type="Int16" Nullable="false" />
+          <Property Name="MEDIATYPEDESC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MEDIA" Relationship="Self.FK_MEDIATYPEID_M" FromRole="MEDIATYPE" ToRole="MEDIA" />
+        </EntityType>
+        <EntityType Name="POST">
+          <Key>
+            <PropertyRef Name="POSTID" />
+          </Key>
+          <Property Name="POSTID" Type="Int16" Nullable="false" />
+          <Property Name="PARENTID" Type="Int16" />
+          <Property Name="POSTDATE" Type="DateTime" />
+          <Property Name="POSTTEXT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USERID" Type="Int16" />
+          <Property Name="POSTTYPEID" Type="Int16" />
+          <Property Name="CATEGORYID" Type="Int16" />
+          <Property Name="MEDIAID" Type="Int16" />
+          <NavigationProperty Name="CATEGORY" Relationship="Self.FK_CATEGORYID_P" FromRole="POST" ToRole="CATEGORY" />
+          <NavigationProperty Name="ITTUSER" Relationship="Self.FK_USERID_P" FromRole="POST" ToRole="ITTUSER" />
+          <NavigationProperty Name="MEDIA" Relationship="Self.FK_POSTID_M" FromRole="POST" ToRole="MEDIA" />
+          <NavigationProperty Name="POST1" Relationship="Self.FK_PARENTID_P" FromRole="POST" ToRole="POST1" />
+          <NavigationProperty Name="POST2" Relationship="Self.FK_PARENTID_P" FromRole="POST1" ToRole="POST" />
+          <NavigationProperty Name="RANKs" Relationship="Self.FK_POSTID_R" FromRole="POST" ToRole="RANK" />
+          <NavigationProperty Name="POSTTYPE" Relationship="Self.FK_POSTTYPEID_P" FromRole="POST" ToRole="POSTTYPE" />
+        </EntityType>
+        <EntityType Name="POSTTYPE">
+          <Key>
+            <PropertyRef Name="POSTTYPEID" />
+          </Key>
+          <Property Name="POSTTYPEID" Type="Int16" Nullable="false" />
+          <Property Name="POSTTYPE1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="POSTs" Relationship="Self.FK_POSTTYPEID_P" FromRole="POSTTYPE" ToRole="POST" />
+        </EntityType>
+        <EntityType Name="RANK">
+          <Key>
+            <PropertyRef Name="RANKID" />
+          </Key>
+          <Property Name="RANKID" Type="Int16" Nullable="false" />
+          <Property Name="POSTRANK" Type="Int16" Nullable="false" />
+          <Property Name="USERID" Type="Int16" Nullable="false" />
+          <Property Name="POSTID" Type="Int16" />
+          <NavigationProperty Name="ITTUSER" Relationship="Self.FK_USERID_R" FromRole="RANK" ToRole="ITTUSER" />
+          <NavigationProperty Name="POST" Relationship="Self.FK_POSTID_R" FromRole="RANK" ToRole="POST" />
+        </EntityType>
+        <EntityType Name="TAG">
+          <Key>
+            <PropertyRef Name="TAGID" />
+          </Key>
+          <Property Name="TAGID" Type="Int16" Nullable="false" />
+          <Property Name="TAGNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CATEGORYID" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="CATEGORY" Relationship="Self.FK_CATEGORYID_T" FromRole="TAG" ToRole="CATEGORY" />
+        </EntityType>
+        <EntityType Name="USERTYPE">
+          <Key>
+            <PropertyRef Name="USERTYPEID" />
+          </Key>
+          <Property Name="USERTYPEID" Type="Int16" Nullable="false" />
+          <Property Name="TYPEDESCRIPTION" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ITTUSERs" Relationship="Self.FK_USERTYPEID_UD" FromRole="USERTYPE" ToRole="ITTUSER" />
+        </EntityType>
+        <EntityType Name="MEDIA_MODERATOR_VIEW">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="POSTTEXT" />
+          </Key>
+          <Property Name="USERID" Type="Int16" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POSTTEXT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POSTTYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CATEGORYNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TAGNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="POSTRANK" Type="Int16" />
+        </EntityType>
+        <EntityType Name="VIEWPOST">
+          <Key>
+            <PropertyRef Name="POSTID" />
+            <PropertyRef Name="POSTTEXT" />
+          </Key>
+          <Property Name="POSTID" Type="Int16" Nullable="false" />
+          <Property Name="POSTTEXT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USERID" Type="Int16" />
+        </EntityType>
+        <EntityType Name="VIEWUSER">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="FIRSTNAME" />
+            <PropertyRef Name="SURNAME" />
+          </Key>
+          <Property Name="USERID" Type="Int16" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VIEWUSERPOST">
+          <Key>
+            <PropertyRef Name="FIRSTNAME" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="POSTTEXT" />
+          </Key>
+          <Property Name="USERID" Type="Int16" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POSTTEXT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VIEWUSERPOSTSTYPECATTAGRANK">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="POSTTEXT" />
+          </Key>
+          <Property Name="USERID" Type="Int16" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POSTTEXT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POSTTYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CATEGORYNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TAGNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="POSTRANK" Type="Int16" />
+        </EntityType>
+        <EntityType Name="VIEWUSERPROFILE">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="FIRSTNAME" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="EMAIL" />
+          </Key>
+          <Property Name="USERID" Type="Int16" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SCORE" Type="Int16" />
+          <Property Name="PROFILEPIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VIEWUSERTYPEPOST">
+          <Key>
+            <PropertyRef Name="TYPEDESCRIPTION" />
+            <PropertyRef Name="FIRSTNAME" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="POSTTEXT" />
+          </Key>
+          <Property Name="USERID" Type="Int16" />
+          <Property Name="TYPEDESCRIPTION" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POSTTEXT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CATEGORYID_P">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+          <End Role="POST" Type="Self.POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORYID" />
+            </Principal>
+            <Dependent Role="POST">
+              <PropertyRef Name="CATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORYID_T">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+          <End Role="TAG" Type="Self.TAG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORYID" />
+            </Principal>
+            <Dependent Role="TAG">
+              <PropertyRef Name="CATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERID_P">
+          <End Role="ITTUSER" Type="Self.ITTUSER" Multiplicity="0..1" />
+          <End Role="POST" Type="Self.POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITTUSER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="POST">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERID_R">
+          <End Role="ITTUSER" Type="Self.ITTUSER" Multiplicity="1" />
+          <End Role="RANK" Type="Self.RANK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITTUSER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="RANK">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERTYPEID_UD">
+          <End Role="USERTYPE" Type="Self.USERTYPE" Multiplicity="0..1" />
+          <End Role="ITTUSER" Type="Self.ITTUSER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERTYPE">
+              <PropertyRef Name="USERTYPEID" />
+            </Principal>
+            <Dependent Role="ITTUSER">
+              <PropertyRef Name="USERTYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDIATYPEID_M">
+          <End Role="MEDIATYPE" Type="Self.MEDIATYPE" Multiplicity="0..1" />
+          <End Role="MEDIA" Type="Self.Medium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDIATYPE">
+              <PropertyRef Name="MEDIATYPEID" />
+            </Principal>
+            <Dependent Role="MEDIA">
+              <PropertyRef Name="MEDIATYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSTID_M">
+          <End Role="POST" Type="Self.POST" Multiplicity="0..1" />
+          <End Role="MEDIA" Type="Self.Medium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POST">
+              <PropertyRef Name="POSTID" />
+            </Principal>
+            <Dependent Role="MEDIA">
+              <PropertyRef Name="POSTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PARENTID_P">
+          <End Role="POST" Type="Self.POST" Multiplicity="0..1" />
+          <End Role="POST1" Type="Self.POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POST">
+              <PropertyRef Name="POSTID" />
+            </Principal>
+            <Dependent Role="POST1">
+              <PropertyRef Name="PARENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSTID_R">
+          <End Role="POST" Type="Self.POST" Multiplicity="0..1" />
+          <End Role="RANK" Type="Self.RANK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POST">
+              <PropertyRef Name="POSTID" />
+            </Principal>
+            <Dependent Role="RANK">
+              <PropertyRef Name="POSTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSTTYPEID_P">
+          <End Role="POSTTYPE" Type="Self.POSTTYPE" Multiplicity="0..1" />
+          <End Role="POST" Type="Self.POST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSTTYPE">
+              <PropertyRef Name="POSTTYPEID" />
+            </Principal>
+            <Dependent Role="POST">
+              <PropertyRef Name="POSTTYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PostITTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORies" EntityType="Self.CATEGORY" />
+          <EntitySet Name="ITTUSERs" EntityType="Self.ITTUSER" />
+          <EntitySet Name="MEDIA" EntityType="Self.Medium" />
+          <EntitySet Name="MEDIATYPEs" EntityType="Self.MEDIATYPE" />
+          <EntitySet Name="POSTs" EntityType="Self.POST" />
+          <EntitySet Name="POSTTYPEs" EntityType="Self.POSTTYPE" />
+          <EntitySet Name="RANKs" EntityType="Self.RANK" />
+          <EntitySet Name="TAGs" EntityType="Self.TAG" />
+          <EntitySet Name="USERTYPEs" EntityType="Self.USERTYPE" />
+          <EntitySet Name="MEDIA_MODERATOR_VIEW" EntityType="Self.MEDIA_MODERATOR_VIEW" />
+          <EntitySet Name="VIEWPOSTS" EntityType="Self.VIEWPOST" />
+          <EntitySet Name="VIEWUSERs" EntityType="Self.VIEWUSER" />
+          <EntitySet Name="VIEWUSERPOSTS" EntityType="Self.VIEWUSERPOST" />
+          <EntitySet Name="VIEWUSERPOSTSTYPECATTAGRANKs" EntityType="Self.VIEWUSERPOSTSTYPECATTAGRANK" />
+          <EntitySet Name="VIEWUSERPROFILEs" EntityType="Self.VIEWUSERPROFILE" />
+          <EntitySet Name="VIEWUSERTYPEPOSTS" EntityType="Self.VIEWUSERTYPEPOST" />
+          <AssociationSet Name="FK_CATEGORYID_P" Association="Self.FK_CATEGORYID_P">
+            <End Role="CATEGORY" EntitySet="CATEGORies" />
+            <End Role="POST" EntitySet="POSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORYID_T" Association="Self.FK_CATEGORYID_T">
+            <End Role="CATEGORY" EntitySet="CATEGORies" />
+            <End Role="TAG" EntitySet="TAGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERID_P" Association="Self.FK_USERID_P">
+            <End Role="ITTUSER" EntitySet="ITTUSERs" />
+            <End Role="POST" EntitySet="POSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERID_R" Association="Self.FK_USERID_R">
+            <End Role="ITTUSER" EntitySet="ITTUSERs" />
+            <End Role="RANK" EntitySet="RANKs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERTYPEID_UD" Association="Self.FK_USERTYPEID_UD">
+            <End Role="USERTYPE" EntitySet="USERTYPEs" />
+            <End Role="ITTUSER" EntitySet="ITTUSERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDIATYPEID_M" Association="Self.FK_MEDIATYPEID_M">
+            <End Role="MEDIATYPE" EntitySet="MEDIATYPEs" />
+            <End Role="MEDIA" EntitySet="MEDIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSTID_M" Association="Self.FK_POSTID_M">
+            <End Role="POST" EntitySet="POSTs" />
+            <End Role="MEDIA" EntitySet="MEDIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PARENTID_P" Association="Self.FK_PARENTID_P">
+            <End Role="POST" EntitySet="POSTs" />
+            <End Role="POST1" EntitySet="POSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSTID_R" Association="Self.FK_POSTID_R">
+            <End Role="POST" EntitySet="POSTs" />
+            <End Role="RANK" EntitySet="RANKs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSTTYPEID_P" Association="Self.FK_POSTTYPEID_P">
+            <End Role="POSTTYPE" EntitySet="POSTTYPEs" />
+            <End Role="POST" EntitySet="POSTs" />
+          </AssociationSet>
+          <FunctionImport Name="ANSWERPOST" />
+          <FunctionImport Name="CREATEADMINISTRATOR" />
+          <FunctionImport Name="CREATECATEGORY">
+          <Parameter Name="CATDESC" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CREATEITTUSER">
+            <Parameter Name="FIRSTNAME" Mode="In" Type="String" />
+            <Parameter Name="SURNAME" Mode="In" Type="String" />
+            <Parameter Name="PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CREATETAG">
+            <Parameter Name="TAGDESC" Mode="In" Type="String" />
+            <Parameter Name="CATID" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CREATEUSERTYPE" />
+          <FunctionImport Name="DEREGISTERITTUSER">
+            <Parameter Name="FNAM" Mode="In" Type="String" />
+            <Parameter Name="SNAM" Mode="In" Type="String" />
+            <Parameter Name="PASS" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INFORMATIVEPOST" />
+          <FunctionImport Name="INITIALPOST">
+          <Parameter Name="POSTID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LOADAFILEPROCEDURE">
+            <Parameter Name="DIR_NAME" Mode="In" Type="String" />
+            <Parameter Name="URL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LOGIN">
+            <Parameter Name="V_EMAIL" Mode="In" Type="String" />
+            <Parameter Name="V_PASSWORD" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="QUESTIONPOST" />
+          <FunctionImport Name="REPLYPOST" />
+          <FunctionImport Name="REPLYPOSTPROC">
+            <Parameter Name="CHILDPOSTID" Mode="In" Type="Decimal" />
+            <Parameter Name="PARENTPOSTID" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATESCORE">
+          <Parameter Name="UID" Mode="In" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PostITTModel1StoreContainer" CdmEntityContainer="PostITTEntities">
+          <EntitySetMapping Name="CATEGORies">
+            <EntityTypeMapping TypeName="PostITTModel1.CATEGORY">
+              <MappingFragment StoreEntitySet="CATEGORY">
+                <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+                <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITTUSERs">
+            <EntityTypeMapping TypeName="PostITTModel1.ITTUSER">
+              <MappingFragment StoreEntitySet="ITTUSER">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SCORE" ColumnName="SCORE" />
+                <ScalarProperty Name="PROFILEPIC" ColumnName="PROFILEPIC" />
+                <ScalarProperty Name="USERTYPEID" ColumnName="USERTYPEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDIA">
+            <EntityTypeMapping TypeName="PostITTModel1.Medium">
+              <MappingFragment StoreEntitySet="MEDIA">
+                <ScalarProperty Name="MEDIAID" ColumnName="MEDIAID" />
+                <ScalarProperty Name="MEDIATYPEID" ColumnName="MEDIATYPEID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="POSTID" ColumnName="POSTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDIATYPEs">
+            <EntityTypeMapping TypeName="PostITTModel1.MEDIATYPE">
+              <MappingFragment StoreEntitySet="MEDIATYPE">
+                <ScalarProperty Name="MEDIATYPEID" ColumnName="MEDIATYPEID" />
+                <ScalarProperty Name="MEDIATYPEDESC" ColumnName="MEDIATYPEDESC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POSTs">
+            <EntityTypeMapping TypeName="PostITTModel1.POST">
+              <MappingFragment StoreEntitySet="POST">
+                <ScalarProperty Name="POSTID" ColumnName="POSTID" />
+                <ScalarProperty Name="PARENTID" ColumnName="PARENTID" />
+                <ScalarProperty Name="POSTDATE" ColumnName="POSTDATE" />
+                <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="POSTTYPEID" ColumnName="POSTTYPEID" />
+                <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+                <ScalarProperty Name="MEDIAID" ColumnName="MEDIAID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POSTTYPEs">
+            <EntityTypeMapping TypeName="PostITTModel1.POSTTYPE">
+              <MappingFragment StoreEntitySet="POSTTYPE">
+                <ScalarProperty Name="POSTTYPEID" ColumnName="POSTTYPEID" />
+                <ScalarProperty Name="POSTTYPE1" ColumnName="POSTTYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RANKs">
+            <EntityTypeMapping TypeName="PostITTModel1.RANK">
+              <MappingFragment StoreEntitySet="RANK">
+                <ScalarProperty Name="RANKID" ColumnName="RANKID" />
+                <ScalarProperty Name="POSTRANK" ColumnName="POSTRANK" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="POSTID" ColumnName="POSTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAGs">
+            <EntityTypeMapping TypeName="PostITTModel1.TAG">
+              <MappingFragment StoreEntitySet="TAG">
+                <ScalarProperty Name="TAGID" ColumnName="TAGID" />
+                <ScalarProperty Name="TAGNAME" ColumnName="TAGNAME" />
+                <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERTYPEs">
+            <EntityTypeMapping TypeName="PostITTModel1.USERTYPE">
+              <MappingFragment StoreEntitySet="USERTYPE">
+                <ScalarProperty Name="USERTYPEID" ColumnName="USERTYPEID" />
+                <ScalarProperty Name="TYPEDESCRIPTION" ColumnName="TYPEDESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDIA_MODERATOR_VIEW">
+            <EntityTypeMapping TypeName="PostITTModel1.MEDIA_MODERATOR_VIEW">
+              <MappingFragment StoreEntitySet="MEDIA_MODERATOR_VIEW">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+                <ScalarProperty Name="POSTTYPE" ColumnName="POSTTYPE" />
+                <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
+                <ScalarProperty Name="TAGNAME" ColumnName="TAGNAME" />
+                <ScalarProperty Name="POSTRANK" ColumnName="POSTRANK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWPOSTS">
+            <EntityTypeMapping TypeName="PostITTModel1.VIEWPOST">
+              <MappingFragment StoreEntitySet="VIEWPOSTS">
+                <ScalarProperty Name="POSTID" ColumnName="POSTID" />
+                <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWUSERs">
+            <EntityTypeMapping TypeName="PostITTModel1.VIEWUSER">
+              <MappingFragment StoreEntitySet="VIEWUSER">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWUSERPOSTS">
+            <EntityTypeMapping TypeName="PostITTModel1.VIEWUSERPOST">
+              <MappingFragment StoreEntitySet="VIEWUSERPOSTS">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWUSERPOSTSTYPECATTAGRANKs">
+            <EntityTypeMapping TypeName="PostITTModel1.VIEWUSERPOSTSTYPECATTAGRANK">
+              <MappingFragment StoreEntitySet="VIEWUSERPOSTSTYPECATTAGRANK">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+                <ScalarProperty Name="POSTTYPE" ColumnName="POSTTYPE" />
+                <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
+                <ScalarProperty Name="TAGNAME" ColumnName="TAGNAME" />
+                <ScalarProperty Name="POSTRANK" ColumnName="POSTRANK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWUSERPROFILEs">
+            <EntityTypeMapping TypeName="PostITTModel1.VIEWUSERPROFILE">
+              <MappingFragment StoreEntitySet="VIEWUSERPROFILE">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SCORE" ColumnName="SCORE" />
+                <ScalarProperty Name="PROFILEPIC" ColumnName="PROFILEPIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWUSERTYPEPOSTS">
+            <EntityTypeMapping TypeName="PostITTModel1.VIEWUSERTYPEPOST">
+              <MappingFragment StoreEntitySet="VIEWUSERTYPEPOSTS">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="TYPEDESCRIPTION" ColumnName="TYPEDESCRIPTION" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ANSWERPOST" FunctionName="PostITTModel1.Store.ANSWERPOST" />
+          <FunctionImportMapping FunctionImportName="CREATEADMINISTRATOR" FunctionName="PostITTModel1.Store.CREATEADMINISTRATOR" />
+          <FunctionImportMapping FunctionImportName="CREATECATEGORY" FunctionName="PostITTModel1.Store.CREATECATEGORY" />
+          <FunctionImportMapping FunctionImportName="CREATEITTUSER" FunctionName="PostITTModel1.Store.CREATEITTUSER" />
+          <FunctionImportMapping FunctionImportName="CREATETAG" FunctionName="PostITTModel1.Store.CREATETAG" />
+          <FunctionImportMapping FunctionImportName="CREATEUSERTYPE" FunctionName="PostITTModel1.Store.CREATEUSERTYPE" />
+          <FunctionImportMapping FunctionImportName="DEREGISTERITTUSER" FunctionName="PostITTModel1.Store.DEREGISTERITTUSER" />
+          <FunctionImportMapping FunctionImportName="INFORMATIVEPOST" FunctionName="PostITTModel1.Store.INFORMATIVEPOST" />
+          <FunctionImportMapping FunctionImportName="INITIALPOST" FunctionName="PostITTModel1.Store.INITIALPOST" />
+          <FunctionImportMapping FunctionImportName="LOADAFILEPROCEDURE" FunctionName="PostITTModel1.Store.LOADAFILEPROCEDURE" />
+          <FunctionImportMapping FunctionImportName="LOGIN" FunctionName="PostITTModel1.Store.LOGIN" />
+          <FunctionImportMapping FunctionImportName="QUESTIONPOST" FunctionName="PostITTModel1.Store.QUESTIONPOST" />
+          <FunctionImportMapping FunctionImportName="REPLYPOST" FunctionName="PostITTModel1.Store.REPLYPOST" />
+          <FunctionImportMapping FunctionImportName="REPLYPOSTPROC" FunctionName="PostITTModel1.Store.REPLYPOSTPROC" />
+          <FunctionImportMapping FunctionImportName="UPDATESCORE" FunctionName="PostITTModel1.Store.UPDATESCORE" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

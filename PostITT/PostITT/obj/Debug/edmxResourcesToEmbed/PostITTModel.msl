@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PostITTModel1StoreContainer" CdmEntityContainer="PostITTEntities">
+    <EntitySetMapping Name="CATEGORies">
+      <EntityTypeMapping TypeName="PostITTModel1.CATEGORY">
+        <MappingFragment StoreEntitySet="CATEGORY">
+          <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+          <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITTUSERs">
+      <EntityTypeMapping TypeName="PostITTModel1.ITTUSER">
+        <MappingFragment StoreEntitySet="ITTUSER">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SCORE" ColumnName="SCORE" />
+          <ScalarProperty Name="PROFILEPIC" ColumnName="PROFILEPIC" />
+          <ScalarProperty Name="USERTYPEID" ColumnName="USERTYPEID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEDIA">
+      <EntityTypeMapping TypeName="PostITTModel1.Medium">
+        <MappingFragment StoreEntitySet="MEDIA">
+          <ScalarProperty Name="MEDIAID" ColumnName="MEDIAID" />
+          <ScalarProperty Name="MEDIATYPEID" ColumnName="MEDIATYPEID" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="POSTID" ColumnName="POSTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEDIATYPEs">
+      <EntityTypeMapping TypeName="PostITTModel1.MEDIATYPE">
+        <MappingFragment StoreEntitySet="MEDIATYPE">
+          <ScalarProperty Name="MEDIATYPEID" ColumnName="MEDIATYPEID" />
+          <ScalarProperty Name="MEDIATYPEDESC" ColumnName="MEDIATYPEDESC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSTs">
+      <EntityTypeMapping TypeName="PostITTModel1.POST">
+        <MappingFragment StoreEntitySet="POST">
+          <ScalarProperty Name="POSTID" ColumnName="POSTID" />
+          <ScalarProperty Name="PARENTID" ColumnName="PARENTID" />
+          <ScalarProperty Name="POSTDATE" ColumnName="POSTDATE" />
+          <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="POSTTYPEID" ColumnName="POSTTYPEID" />
+          <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+          <ScalarProperty Name="MEDIAID" ColumnName="MEDIAID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSTTYPEs">
+      <EntityTypeMapping TypeName="PostITTModel1.POSTTYPE">
+        <MappingFragment StoreEntitySet="POSTTYPE">
+          <ScalarProperty Name="POSTTYPEID" ColumnName="POSTTYPEID" />
+          <ScalarProperty Name="POSTTYPE1" ColumnName="POSTTYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RANKs">
+      <EntityTypeMapping TypeName="PostITTModel1.RANK">
+        <MappingFragment StoreEntitySet="RANK">
+          <ScalarProperty Name="RANKID" ColumnName="RANKID" />
+          <ScalarProperty Name="POSTRANK" ColumnName="POSTRANK" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="POSTID" ColumnName="POSTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAGs">
+      <EntityTypeMapping TypeName="PostITTModel1.TAG">
+        <MappingFragment StoreEntitySet="TAG">
+          <ScalarProperty Name="TAGID" ColumnName="TAGID" />
+          <ScalarProperty Name="TAGNAME" ColumnName="TAGNAME" />
+          <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERTYPEs">
+      <EntityTypeMapping TypeName="PostITTModel1.USERTYPE">
+        <MappingFragment StoreEntitySet="USERTYPE">
+          <ScalarProperty Name="USERTYPEID" ColumnName="USERTYPEID" />
+          <ScalarProperty Name="TYPEDESCRIPTION" ColumnName="TYPEDESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEDIA_MODERATOR_VIEW">
+      <EntityTypeMapping TypeName="PostITTModel1.MEDIA_MODERATOR_VIEW">
+        <MappingFragment StoreEntitySet="MEDIA_MODERATOR_VIEW">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+          <ScalarProperty Name="POSTTYPE" ColumnName="POSTTYPE" />
+          <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
+          <ScalarProperty Name="TAGNAME" ColumnName="TAGNAME" />
+          <ScalarProperty Name="POSTRANK" ColumnName="POSTRANK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEWPOSTS">
+      <EntityTypeMapping TypeName="PostITTModel1.VIEWPOST">
+        <MappingFragment StoreEntitySet="VIEWPOSTS">
+          <ScalarProperty Name="POSTID" ColumnName="POSTID" />
+          <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEWUSERs">
+      <EntityTypeMapping TypeName="PostITTModel1.VIEWUSER">
+        <MappingFragment StoreEntitySet="VIEWUSER">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEWUSERPOSTS">
+      <EntityTypeMapping TypeName="PostITTModel1.VIEWUSERPOST">
+        <MappingFragment StoreEntitySet="VIEWUSERPOSTS">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEWUSERPOSTSTYPECATTAGRANKs">
+      <EntityTypeMapping TypeName="PostITTModel1.VIEWUSERPOSTSTYPECATTAGRANK">
+        <MappingFragment StoreEntitySet="VIEWUSERPOSTSTYPECATTAGRANK">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+          <ScalarProperty Name="POSTTYPE" ColumnName="POSTTYPE" />
+          <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
+          <ScalarProperty Name="TAGNAME" ColumnName="TAGNAME" />
+          <ScalarProperty Name="POSTRANK" ColumnName="POSTRANK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEWUSERPROFILEs">
+      <EntityTypeMapping TypeName="PostITTModel1.VIEWUSERPROFILE">
+        <MappingFragment StoreEntitySet="VIEWUSERPROFILE">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SCORE" ColumnName="SCORE" />
+          <ScalarProperty Name="PROFILEPIC" ColumnName="PROFILEPIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEWUSERTYPEPOSTS">
+      <EntityTypeMapping TypeName="PostITTModel1.VIEWUSERTYPEPOST">
+        <MappingFragment StoreEntitySet="VIEWUSERTYPEPOSTS">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="TYPEDESCRIPTION" ColumnName="TYPEDESCRIPTION" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ANSWERPOST" FunctionName="PostITTModel1.Store.ANSWERPOST" />
+    <FunctionImportMapping FunctionImportName="CREATEADMINISTRATOR" FunctionName="PostITTModel1.Store.CREATEADMINISTRATOR" />
+    <FunctionImportMapping FunctionImportName="CREATECATEGORY" FunctionName="PostITTModel1.Store.CREATECATEGORY" />
+    <FunctionImportMapping FunctionImportName="CREATEITTUSER" FunctionName="PostITTModel1.Store.CREATEITTUSER" />
+    <FunctionImportMapping FunctionImportName="CREATETAG" FunctionName="PostITTModel1.Store.CREATETAG" />
+    <FunctionImportMapping FunctionImportName="CREATEUSERTYPE" FunctionName="PostITTModel1.Store.CREATEUSERTYPE" />
+    <FunctionImportMapping FunctionImportName="DEREGISTERITTUSER" FunctionName="PostITTModel1.Store.DEREGISTERITTUSER" />
+    <FunctionImportMapping FunctionImportName="INFORMATIVEPOST" FunctionName="PostITTModel1.Store.INFORMATIVEPOST" />
+    <FunctionImportMapping FunctionImportName="INITIALPOST" FunctionName="PostITTModel1.Store.INITIALPOST" />
+    <FunctionImportMapping FunctionImportName="LOADAFILEPROCEDURE" FunctionName="PostITTModel1.Store.LOADAFILEPROCEDURE" />
+    <FunctionImportMapping FunctionImportName="LOGIN" FunctionName="PostITTModel1.Store.LOGIN" />
+    <FunctionImportMapping FunctionImportName="QUESTIONPOST" FunctionName="PostITTModel1.Store.QUESTIONPOST" />
+    <FunctionImportMapping FunctionImportName="REPLYPOST" FunctionName="PostITTModel1.Store.REPLYPOST" />
+    <FunctionImportMapping FunctionImportName="REPLYPOSTPROC" FunctionName="PostITTModel1.Store.REPLYPOSTPROC" />
+    <FunctionImportMapping FunctionImportName="UPDATESCORE" FunctionName="PostITTModel1.Store.UPDATESCORE" />
+  </EntityContainerMapping>
+</Mapping>

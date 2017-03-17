@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="CATEGORies">
+      <EntityTypeMapping TypeName="Model.CATEGORY">
+        <MappingFragment StoreEntitySet="CATEGORY">
+          <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+          <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITTUSERs">
+      <EntityTypeMapping TypeName="Model.ITTUSER">
+        <MappingFragment StoreEntitySet="ITTUSER">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SCORE" ColumnName="SCORE" />
+          <ScalarProperty Name="PROFILEPIC" ColumnName="PROFILEPIC" />
+          <ScalarProperty Name="USERTYPEID" ColumnName="USERTYPEID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEDIA">
+      <EntityTypeMapping TypeName="Model.Medium">
+        <MappingFragment StoreEntitySet="MEDIA">
+          <ScalarProperty Name="MEDIAID" ColumnName="MEDIAID" />
+          <ScalarProperty Name="MEDIATYPEID" ColumnName="MEDIATYPEID" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="POSTID" ColumnName="POSTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEDIATYPEs">
+      <EntityTypeMapping TypeName="Model.MEDIATYPE">
+        <MappingFragment StoreEntitySet="MEDIATYPE">
+          <ScalarProperty Name="MEDIATYPEID" ColumnName="MEDIATYPEID" />
+          <ScalarProperty Name="MEDIATYPEDESC" ColumnName="MEDIATYPEDESC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSTs">
+      <EntityTypeMapping TypeName="Model.POST">
+        <MappingFragment StoreEntitySet="POST">
+          <ScalarProperty Name="POSTID" ColumnName="POSTID" />
+          <ScalarProperty Name="PARENTID" ColumnName="PARENTID" />
+          <ScalarProperty Name="POSTDATE" ColumnName="POSTDATE" />
+          <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="POSTTYPEID" ColumnName="POSTTYPEID" />
+          <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+          <ScalarProperty Name="MEDIAID" ColumnName="MEDIAID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSTTYPEs">
+      <EntityTypeMapping TypeName="Model.POSTTYPE">
+        <MappingFragment StoreEntitySet="POSTTYPE">
+          <ScalarProperty Name="POSTTYPEID" ColumnName="POSTTYPEID" />
+          <ScalarProperty Name="POSTTYPE1" ColumnName="POSTTYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RANKs">
+      <EntityTypeMapping TypeName="Model.RANK">
+        <MappingFragment StoreEntitySet="RANK">
+          <ScalarProperty Name="RANKID" ColumnName="RANKID" />
+          <ScalarProperty Name="POSTRANK" ColumnName="POSTRANK" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="POSTID" ColumnName="POSTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAGs">
+      <EntityTypeMapping TypeName="Model.TAG">
+        <MappingFragment StoreEntitySet="TAG">
+          <ScalarProperty Name="TAGID" ColumnName="TAGID" />
+          <ScalarProperty Name="TAGNAME" ColumnName="TAGNAME" />
+          <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERTYPEs">
+      <EntityTypeMapping TypeName="Model.USERTYPE">
+        <MappingFragment StoreEntitySet="USERTYPE">
+          <ScalarProperty Name="USERTYPEID" ColumnName="USERTYPEID" />
+          <ScalarProperty Name="TYPEDESCRIPTION" ColumnName="TYPEDESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEDIA_MODERATOR_VIEW">
+      <EntityTypeMapping TypeName="Model.MEDIA_MODERATOR_VIEW">
+        <MappingFragment StoreEntitySet="MEDIA_MODERATOR_VIEW">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+          <ScalarProperty Name="POSTTYPE" ColumnName="POSTTYPE" />
+          <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
+          <ScalarProperty Name="TAGNAME" ColumnName="TAGNAME" />
+          <ScalarProperty Name="POSTRANK" ColumnName="POSTRANK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEWPOSTS">
+      <EntityTypeMapping TypeName="Model.VIEWPOST">
+        <MappingFragment StoreEntitySet="VIEWPOSTS">
+          <ScalarProperty Name="POSTID" ColumnName="POSTID" />
+          <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEWUSERs">
+      <EntityTypeMapping TypeName="Model.VIEWUSER">
+        <MappingFragment StoreEntitySet="VIEWUSER">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEWUSERPOSTS">
+      <EntityTypeMapping TypeName="Model.VIEWUSERPOST">
+        <MappingFragment StoreEntitySet="VIEWUSERPOSTS">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEWUSERPOSTSTYPECATTAGRANKs">
+      <EntityTypeMapping TypeName="Model.VIEWUSERPOSTSTYPECATTAGRANK">
+        <MappingFragment StoreEntitySet="VIEWUSERPOSTSTYPECATTAGRANK">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+          <ScalarProperty Name="POSTTYPE" ColumnName="POSTTYPE" />
+          <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
+          <ScalarProperty Name="TAGNAME" ColumnName="TAGNAME" />
+          <ScalarProperty Name="POSTRANK" ColumnName="POSTRANK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEWUSERPROFILEs">
+      <EntityTypeMapping TypeName="Model.VIEWUSERPROFILE">
+        <MappingFragment StoreEntitySet="VIEWUSERPROFILE">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SCORE" ColumnName="SCORE" />
+          <ScalarProperty Name="PROFILEPIC" ColumnName="PROFILEPIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEWUSERTYPEPOSTS">
+      <EntityTypeMapping TypeName="Model.VIEWUSERTYPEPOST">
+        <MappingFragment StoreEntitySet="VIEWUSERTYPEPOSTS">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="TYPEDESCRIPTION" ColumnName="TYPEDESCRIPTION" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="POSTTEXT" ColumnName="POSTTEXT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ANSWERPOST" FunctionName="Model.Store.ANSWERPOST" />
+    <FunctionImportMapping FunctionImportName="CREATEADMINISTRATOR" FunctionName="Model.Store.CREATEADMINISTRATOR" />
+    <FunctionImportMapping FunctionImportName="CREATECATEGORY" FunctionName="Model.Store.CREATECATEGORY" />
+    <FunctionImportMapping FunctionImportName="CREATEITTUSER" FunctionName="Model.Store.CREATEITTUSER" />
+    <FunctionImportMapping FunctionImportName="CREATETAG" FunctionName="Model.Store.CREATETAG" />
+    <FunctionImportMapping FunctionImportName="CREATEUSERTYPE" FunctionName="Model.Store.CREATEUSERTYPE" />
+    <FunctionImportMapping FunctionImportName="DEREGISTERITTUSER" FunctionName="Model.Store.DEREGISTERITTUSER" />
+    <FunctionImportMapping FunctionImportName="INFORMATIVEPOST" FunctionName="Model.Store.INFORMATIVEPOST" />
+    <FunctionImportMapping FunctionImportName="INITIALPOST" FunctionName="Model.Store.INITIALPOST" />
+    <FunctionImportMapping FunctionImportName="LOADAFILEPROCEDURE" FunctionName="Model.Store.LOADAFILEPROCEDURE" />
+    <FunctionImportMapping FunctionImportName="LOGIN" FunctionName="Model.Store.LOGIN" />
+    <FunctionImportMapping FunctionImportName="QUESTIONPOST" FunctionName="Model.Store.QUESTIONPOST" />
+    <FunctionImportMapping FunctionImportName="REPLYPOST" FunctionName="Model.Store.REPLYPOST" />
+    <FunctionImportMapping FunctionImportName="REPLYPOSTPROC" FunctionName="Model.Store.REPLYPOSTPROC" />
+    <FunctionImportMapping FunctionImportName="UPDATESCORE" FunctionName="Model.Store.UPDATESCORE" />
+  </EntityContainerMapping>
+</Mapping>

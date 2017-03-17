@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b9822907920540aaba93ff17088cf2f2" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.CATEGORY" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ITTUSER" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Medium" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MEDIATYPE" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.POST" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.POSTTYPE" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RANK" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TAG" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.USERTYPE" Width="1.5" PointX="1.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MEDIA_MODERATOR_VIEW" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VIEWPOST" Width="1.5" PointX="7.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VIEWUSER" Width="1.5" PointX="5.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VIEWUSERPOST" Width="1.5" PointX="7.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VIEWUSERPOSTSTYPECATTAGRANK" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VIEWUSERPROFILE" Width="1.5" PointX="9.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VIEWUSERTYPEPOST" Width="1.5" PointX="9.75" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_CATEGORYID_P" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CATEGORYID_T" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_USERID_P" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_USERID_R" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_USERTYPEID_UD" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_MEDIATYPEID_M" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_POSTID_M" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PARENTID_P" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_POSTID_R" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_POSTTYPEID_P" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
